@@ -1,4 +1,4 @@
-{% block content %}
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -11,7 +11,6 @@
         <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
         <!-- CSS -->
         <link rel="stylesheet" href={% static 'login/style/custom.css' %}>
-        <img src={% static 'login/img/Foto-personal.png' %}>
         
         <title>¡Bienvenido a ITBANK!</title>
     </head>
@@ -24,7 +23,7 @@
                 <div class="col p-5 rounded-start bg-secondary" id="formulario">
                     <div class="row">
                         <div class="container text-center col-lg-4">
-                            <img src="../img/itbank-logo.jpg" class="img-fluid" alt="">
+                            <img src={% static 'login/img/itbank-logo.jpg' %} class="img-fluid" alt="">
                         </div>
                     </div>
                 <h2 class="fw-bold text-center py-5 text-white">¡Hola! Te damos la bienvenida</h2>                
@@ -97,7 +96,7 @@
             </div>
             <!-- COLUMNA DERECHA -->
             <div class="container col bg-danger justify-content-center"> 
-                <img src="../img/Foto-personal.png" class="img-fluid" alt="">
+                <img src={% static 'login/img/Foto-personal.png' %} class="img-fluid" alt="">
             </div>
         </div>
     </div>
@@ -108,5 +107,4 @@
 </main>
     
 </body>
-{% block content %}{% endblock %}
 </html>

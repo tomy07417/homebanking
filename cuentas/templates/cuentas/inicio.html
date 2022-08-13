@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Itbank</title>
-    <link rel="icon" href='{% static "cuentas/img/itbank-logo.ico" %}'/>  
+    <link rel="icon" href={% static "cuentas/img/itbank-logo.ico" %}/>  
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
@@ -26,6 +26,8 @@
       integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy"
       crossorigin="anonymous"
     ></script>
+
+    <link rel="stylesheet" href={% static 'cuentas/style/styles.css' %}/>
   </head>
 
   <body>
@@ -76,7 +78,7 @@
           </div>
         </div>
         <img
-          src='{% static "cuentas/img/itbank-logo.jpg" %}'
+          src={% static "cuentas/img/itbank-logo.jpg" %}
           class="logo-itbank"
           alt="logo itbank"
         />
@@ -193,28 +195,28 @@
 
         <section class="nav-bar justify-content-center">
           <button type="button">
-            <img src='{% static "cuentas/img/sync_alta.png" %}' alt="" /> Transferencias
+            <img src={% static "cuentas/img/sync_alt.png" %} alt="" /> Transferencias
           </button>
           <button type="button">
-            <img src='{% static "cuentas/img/payments.png" %}' alt="" /> Pagos
+            <img src={% static "cuentas/img/payments.png" %} alt="" /> Pagos
           </button>
           <button type="button">
-            <img src='{% static "cuentas/img/credit_card.png" %}' alt="" /> Tarjetas
+            <img src={% static "cuentas/img/credit_card.png" %} alt="" /> Tarjetas
           </button>
           <button
             type="button"
             onclick="window.location.href = '../accesos_directos/prestamos.html'"
           >
-            <img src='{% static "cuentas/img/handshake.png" %}' alt="" /> Préstamos
+            <img src={% static "cuentas/img/handshake.png" %} alt="" /> Préstamos
           </button>
           <button type="button">
-            <img src='{% static "cuentas/img/monitoring.png" %}' alt="" /> Inversiones
+            <img src={% static "cuentas/img/monitoring.png" %} alt="" /> Inversiones
           </button>
           <button
             type="button"
             onclick="window.location.href = '../accesos_directos/cheques.html'"
           >
-            <img src='{% static "cuentas/img/newspaper.png" %}' alt="" /> Chequera
+            <img src={% static "cuentas/img/newspaper.png" %} alt="" /> Chequera
           </button>
         </section>
       </section>
@@ -229,7 +231,7 @@
         </div>
         <div class="cajamiddle">
           <div class="logo">
-            <img src='{% static "cuentas/img/itbank-logo.jpg" %}' alt="Logo" />
+            <img src={% static "cuentas/img/itbank-logo.jpg" %} alt="Logo" />
           </div>
           <div class="media-icons">
             <nav class="botones-footer">
@@ -263,7 +265,6 @@
         </div>
       </div>
     </footer>
-    {% block content %}{% endblock content %}
-    <script src='{% static "cuentas/js/index.js" %}'></script>
+    <script src={% static "cuentas/js/index.js" %}></script>
   </body>
 </html>
