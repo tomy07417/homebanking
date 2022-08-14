@@ -19,5 +19,5 @@ def post_new(request):
             post.save() 
             return redirect('post_detail', pk=post.pk)
     else:
-        form = PrestamosForm()
-    return render(request, 'blog/post_edit.html', {'form': form})
+        forms = PrestamosForm()
+    return render(request, 'Prestamos/prestamos.html', {'forms': forms})
