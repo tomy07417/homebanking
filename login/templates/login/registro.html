@@ -1,0 +1,19 @@
+{% block content %}
+
+    <h1> Registro de usuario </h1>
+
+    <form actions= "{% url 'guardarUsuario' %}" method= 'POST'>
+                
+    {% csrf_token %}
+    {% if mensaje %}
+        <div role="alert">
+            Usuario Registrado
+        </div>
+    {% endif %}
+
+    {{form}}
+
+    <button type="submit">Registrarse</button>
+
+    </form>
+{% endblock  %}

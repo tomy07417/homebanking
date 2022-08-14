@@ -1,18 +1,17 @@
+from datetime import timezone
 from django.shortcuts import render
 from .forms import PrestamosForm
+from django.shortcuts import redirect
+
 # Create your views here.
-
-
 def prestamos(request):
     forms = PrestamosForm()
     return render(request, 'Prestamos/prestamos.html', {'forms': forms})
 
-
 # ADAPTAR ESTO PARA PRESTAMOS
-
 def post_new(request):
     if request.method == "POST":
-        form = PostForm(request.POST)
+        form = PrestamosForm(request.POST)
         if form.is_valid():
             post = form.save(commit=False)
             post.author = request.user
@@ -20,5 +19,5 @@ def post_new(request):
             post.save() 
             return redirect('post_detail', pk=post.pk)
     else:
-        form = PostForm()
+        form = PrestamosForm()
     return render(request, 'blog/post_edit.html', {'form': form})
