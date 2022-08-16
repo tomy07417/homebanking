@@ -1,23 +1,34 @@
-from django.shortcuts import render
-from django.http import HttpRequest
-from .forms import FormularioRegistro
+from ast import For
+from django.shortcuts import render, redirect
+from .forms import FormularioRegistro, FormularioCliente, FormularioDireccion
+from cliente.models import Cliente
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import login, logout, authenticate
+
 
 # Create your views here.
-
-def login(request):
-    return render(request, 'login/login.html')
-
-class FormularioRegistroView(HttpRequest):
-    def index(request):
-        usuario = FormularioRegistro()
-        return render(request, 'login/registro.html', {"form": usuario})
-    
-    def procesar_formulario(request):
-        usuario = FormularioRegistro(request.POST)
-        if usuario.is_valid():
-            usuario.save()
+def registro(request):
+    if request.method == 'POST':
+        form = [FormularioRegistro(request.POST), FormularioCliente(request.POST), FormularioDireccion(request.POST)]
+        
+        if form[0].is_valid() and form[1].is_valid() and form[2].is_valid():
+            direccion = form[2].save()
+            user = form[0].save()
             
-            usuario = FormularioRegistro()
+            cliente= Cliente(nombre=request.POST.get("nombre"),
+                             apellido=request.POST.get("apellido"),
+                             dni=request.POST.get("dni"),
+                             nacimiento=request.POST.get("nacimiento"),
+                             user = user,
+                             direccion = direccion)
+            cliente.save()
             
-        return render(request, 'login/registro.html', {"form": usuario,
-                                                       "mensaje": "Ok"})
+            login(request, user)
+            return redirect("/inicio")
+            
+    else:
+        form = form = [FormularioRegistro(), FormularioCliente(), FormularioDireccion()]
+        
+    return render(request, 'registration/registro.html', {"form_user": form[0],
+                                                          "form_cliente": form[1],
+                                                          "form_direccion": form[2]})

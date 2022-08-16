@@ -1,8 +1,25 @@
 from socket import fromshare
+from tkinter import Widget
 from django import forms
-from clientes.models import Cliente
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
+from cliente.models import Cliente,Direccion
 
-class FormularioRegistro(forms.ModelForm):
+class FormularioRegistro(UserCreationForm):
+    email = forms.EmailField(required=True)
+    class Meta:
+        model = User
+        fields = ["username", "email", "password1", "password2"]
+        
+class FormularioCliente(forms.ModelForm):
     class Meta:
         model = Cliente
-        fields = ['customer_name', 'customer_surname', 'customer_DNI', 'dob']
+        fields = ["nombre", "apellido", "dni", "nacimiento"]
+        
+        widgets = {'nacimiento': forms.DateInput(attrs={'type': 'date'})}
+        
+class FormularioDireccion(forms.ModelForm):
+    class Meta:
+        model = Direccion
+        fields = ["pais", "provincia", "ciudad", "calle", "nro_calle"]
+        

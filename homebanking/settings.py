@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-6^8+(g#pdv!e&qswi5v&jrh_9@)yxs_ti71qq%-5dg%%g!=q(l'
+SECRET_KEY = 'django-insecure-8yz1#ls$@sp2s$1sw%g1j)t&k6xy4ivy@!tg6+%(v0u&m3ojkx'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -37,12 +37,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'clientes.apps.ClientesConfig',
-    'cuentas.apps.CuentasConfig',
+    'cliente.apps.ClienteConfig',
+    'cuenta.apps.CuentaConfig',
     'login.apps.LoginConfig',
-    'sucursales.apps.SucursalesConfig',
-    'prestamos.apps.PrestamosConfig',
-    'tarjetas.apps.TarjetasConfig'
+    'prestamo.apps.PrestamoConfig',
+    'tarjeta.apps.TarjetaConfig',
 ]
 
 MIDDLEWARE = [
@@ -127,3 +126,6 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGIN_REDIRECT_URL = '/inicio'
+LOGOUT_REDIRECT_URL = '/login'
